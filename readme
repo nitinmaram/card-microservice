@@ -1,25 +1,18 @@
-# card-microservice
-model Card {
-  id    Int     @id @default(autoincrement())
-  cardNumber String  @unique
-  customerName  String
-  limit String
-}
-# Card Micro Service
+# Cards Micro Service
 
-Credit cards CRUD Microservice using express server
+Full Stack application to Add / View & Delete Credit cards from Sqllite DB
 
 ## Getting started
 
-### 1. Clone card-microservice repo and install dependencies
+### 1. Clone the card-microservice repo and install dependencies
 
-```
+```sh
 git clone git@github.com:nitinmaram/card-microservice.git
 ```
 
 Install npm dependencies:
 
-```
+```sh
 cd cards-microservice
 npm install
 ```
@@ -28,35 +21,23 @@ npm install
 
 Run the following command to create your SQLite database file. This will creates the `Card` table which is defined in [`prisma/schema.prisma`](./prisma/schema.prisma):
 
-```
+```sh
 npx prisma migrate dev --name init
 ```
 
 ### 3. Start the REST API server
 
-```
+```sh
 npm run dev
 ```
 
 The server is now running on `http://localhost:3000`.
 
-## Using the REST API
+## Using the Swagger UI to access REST API
 
-You can access the REST API of the server using the following endpoints:
+You can access the Swagger UI of the server using : `http://localhost:3000/api-docs`.
 
-### `GET`
+## Postman Collection
 
-- `/cards`: Fetch all cards
-### `POST`
+Postman collection is placed inside ./public folder
 
-- `/card`: Insert a new card
-  - Body:
-    - `customerName: String` (required): name of the card holder
-    - `cardNumber: String` (required): card number
-    - `limit: Number` (required): credit limit
-
-### `DELETE`
-
-- `/card`: Delete a card by its `card number`
-  - Body:
-    - `cardNumber: String` (required): card number

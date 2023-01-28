@@ -78,9 +78,7 @@ describe('Test Card Controller', () => {
   it('should delete a card', async () => {
     const req = {
       body: {
-        customerName: 'Test User',
-        cardNumber: '4024007193092243',
-        limit: 1000
+        cardNumber: '4024007193092243'
       }
     };
     const res = {
@@ -95,9 +93,7 @@ describe('Test Card Controller', () => {
   it('should get 500 error while deleting the card which is not present in db', async () => {
     const req = {
       body: {
-        customerName: 'Test User',
         cardNumber: '4024007193092243',
-        limit: 1000
       }
     };
     const res = {
