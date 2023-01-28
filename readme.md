@@ -1,6 +1,6 @@
 # Cards Micro Service
 
-Full Stack application to Add / View & Delete Credit cards from Sqllite DB
+ES6 Express server to Add / View & Delete Credit cards from Sqllite DB
 
 ## Getting started
 
