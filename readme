@@ -1,0 +1,62 @@
+# card-microservice
+model Card {
+  id    Int     @id @default(autoincrement())
+  cardNumber String  @unique
+  customerName  String
+  limit String
+}
+# Card Micro Service
+
+Credit cards CRUD Microservice using express server
+
+## Getting started
+
+### 1. Clone card-microservice repo and install dependencies
+
+```
+git clone git@github.com:nitinmaram/card-microservice.git
+```
+
+Install npm dependencies:
+
+```
+cd cards-microservice
+npm install
+```
+
+### 2. Create and seed the database
+
+Run the following command to create your SQLite database file. This will creates the `Card` table which is defined in [`prisma/schema.prisma`](./prisma/schema.prisma):
+
+```
+npx prisma migrate dev --name init
+```
+
+### 3. Start the REST API server
+
+```
+npm run dev
+```
+
+The server is now running on `http://localhost:3000`.
+
+## Using the REST API
+
+You can access the REST API of the server using the following endpoints:
+
+### `GET`
+
+- `/cards`: Fetch all cards
+### `POST`
+
+- `/card`: Insert a new card
+  - Body:
+    - `customerName: String` (required): name of the card holder
+    - `cardNumber: String` (required): card number
+    - `limit: Number` (required): credit limit
+
+### `DELETE`
+
+- `/card`: Delete a card by its `card number`
+  - Body:
+    - `cardNumber: String` (required): card number
