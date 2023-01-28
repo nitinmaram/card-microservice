@@ -3,12 +3,19 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "nyc": {
+    "include": "server",
+    "exclude": [
+      "**/*.spec.js",
+      "server/bin",
+      "server/app.js"
+    ]
+  },
   "scripts": {
     "start": "node ./server/bin/www",
     "dev": "nodemon ./server/bin/www",
-    "test": "npm run test:coverage npm run test:unit",
-    "test:coverage": "nyc",
-    "test:unit": "mocha './server/**/*.spec.js'",
+    "test:unit": "mocha server/**/*.spec.js",
+    "test:coverage": "nyc --reporter=text --all npm run test:unit",
     "prisma:initialise:sqllite": "npx prisma init --datasource-provider sqlite",
     "prisma:migration": "npx prisma migrate dev --name init"
   },
@@ -23,6 +30,9 @@
   },
   "devDependencies": {
     "chai": "^4.3.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "helmet": "^6.0.1",
     "mocha": "^10.2.0",
     "nodemon": "^2.0.20",
     "nyc": "^15.1.0",
