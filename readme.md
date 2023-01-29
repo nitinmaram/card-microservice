@@ -13,7 +13,7 @@ git clone git@github.com:nitinmaram/card-microservice.git
 Install npm dependencies:
 
 ```sh
-cd cards-microservice
+cd card-microservice
 npm install
 ```
 
