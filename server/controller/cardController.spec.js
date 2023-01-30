@@ -2,7 +2,6 @@
 import { stub, spy, mock, assert, restore } from 'sinon';
 import { addCard, getAllCards, deleteCard } from './cardController.js';
 import { cardService } from '../service/cardService.js';
-import { afterEach, describe } from 'mocha';
 describe('Test Card Controller', () => {
   let cardServiceStub;
 

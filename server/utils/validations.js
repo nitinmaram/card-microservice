@@ -3,22 +3,22 @@ const isValidCustomerName = name => (name && typeof name === 'string' && name !=
 
 const isValidLimit = limit => (limit !== undefined && typeof limit === 'number' && limit > 0)
 
+// luhn check
 export const isValidCard = (number) => {
-  let d = 0;
-  let e = false; // e = even = n-th digit counted from the end
-  let arr = number?.split("")
-  //check if credit card has 13 to 19 digits
-  if (arr?.length > 12 && arr?.length < 20) {
-    //luhn check
-    return (arr.reverse().reduce(
-      (s, dstr) => {
-        d = parseInt(dstr); // reduce arg-0 - callback fnc
-        return (s + ((e = !e) ? d : [0, 2, 4, 6, 8, 1, 3, 5, 7, 9][d]));
-      } // /end of callback fnc
-      , 0 // reduce arg-1 - prev number for first iteration (sum)
-    ) % 10 == 0
-    );
-  }
+  //convert into array of numeric digits and reverse it.
+  let numArr = number?.split('')?.reverse()?.map(Number);
+
+  //double the array's elements which are at odd index
+  numArr = numArr?.map((n, i) => i % 2 === 1 ? (n * 2) > 9 ? (n * 2) - 9 : n * 2 : n);
+
+  //find the sum of all the elements of the modified array
+  const sum = numArr?.reduce((acc, curr) => {
+    acc += curr
+    return acc
+  }, 0)
+
+  //return true if the sum is divisible by 10
+  return sum % 10 === 0
 }
 
 export const validateRequest = (req) => {
